@@ -1,0 +1,64 @@
+!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royce Éternité | Inquire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="container">
+        <header class="logo-section">
+            <img src="logo.png" alt="Royce Éternité Logo" class="logo">
+        </header>
+
+        <section class="hero-content">
+            <div class="watch-placeholder">
+                <img src="zegarek.png" alt="Royce Éternité Edition" class="watch-image">
+            </div>
+            
+            <h1 class="reveal-text">Timeless Craftsmanship</h1>
+            <button id="openModal" class="btn-inquire">INQUIRE</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 ROYCE ÉTERNITÉ</p>
+        </footer>
+    </main>
+
+    <div id="inquiryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 class="modal-title">Inquiry Details</h2>
+            <p class="modal-subtitle">Proszę wypełnić poniższy formularz, nasz doradca skontaktuje się z Państwem.</p>
+            
+            <form action="https://formspree.io/f/contact@royceeternite.com" method="POST" class="inquiry-form">
+                <div class="form-row">
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                </div>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number">
+                <input type="text" name="country" placeholder="Country" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                
+                <button type="submit" class="btn-send">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("inquiryModal");
+        const btn = document.getElementById("openModal");
+        const span = document.getElementsByClassName("close-button")[0];
+
+        btn.onclick = () => modal.style.display = "flex";
+        span.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => {
+            if (event.target == modal) modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

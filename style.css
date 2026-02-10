@@ -1,0 +1,222 @@
+/* --- FUNDAMENTY I TYPOGRAFIA --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505; /* Bardzo głęboka czerń */
+    color: #d4af37; /* Klasyczne luksusowe złoto */
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- KONTENER GŁÓWNY --- */
+.container {
+    max-width: 1100px;
+    width: 90%;
+    text-align: center;
+    padding: 60px 20px;
+    z-index: 1;
+}
+
+/* --- LOGO --- */
+.logo {
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.1));
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+/* --- SEKCJA PRODUKTU (HERO) --- */
+.watch-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+    margin-bottom: 30px;
+    /* Delikatna poświata wokół zegarka */
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8)); 
+    animation: slideUp 1.8s ease-out;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+/* --- PRZYCISK GŁÓWNY (INQUIRE) --- */
+.btn-inquire {
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 18px 60px;
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-inquire:hover {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* --- MODAL (OKNO FORMULARZA) --- */
+.modal {
+    display: none; /* Ukryty domyślnie */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Ciemniejsze tło dla skupienia uwagi */
+    backdrop-filter: blur(8px); /* Efekt rozmycia tła w nowoczesnym stylu */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #0f0f0f;
+    padding: 50px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 95%;
+    max-width: 550px;
+    position: relative;
+    animation: scaleIn 0.4s ease-out;
+}
+
+.close-button {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    color: #d4af37;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+.modal-title {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.modal-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 35px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- FORMULARZ --- */
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.inquiry-form input, 
+.inquiry-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333; /* Subtelne linie zamiast ramek */
+    padding: 12px 5px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.4s;
+}
+
+.inquiry-form input:focus, 
+.inquiry-form textarea:focus {
+    border-bottom: 1px solid #d4af37;
+}
+
+.btn-send {
+    background: #d4af37;
+    color: #000;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.btn-send:hover {
+    background: #fff;
+    letter-spacing: 5px;
+}
+
+/* --- STOPKA --- */
+footer {
+    margin-top: 60px;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    color: #fff;
+}
+
+/* --- ANIMACJE --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- RESPONSYWNOŚĆ (MOBILE) --- */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+        width: 90%;
+    }
+    
+    h1 {
+        letter-spacing: 4px;
+    }
+}
