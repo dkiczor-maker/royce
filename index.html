@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royce Éternité | Luxury Experience</title>
+    <!-- MIEJSCE NA TWOJ FAVICON -->
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark-gold: #8a6d3b;
+            --black: #0a0a0a;
+            --gold-gradient: linear-gradient(to bottom, #e2c995 0%, #c5a059 50%, #8a6d3b 100%);
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--black); color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            display: flex; justify-content: center; align-items: center; overflow: hidden;
+        }
+
+        body::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center; z-index: 10; display: flex; flex-direction: column; align-items: center;
+            transition: filter 0.5s ease;
+        }
+
+        .container.blur { filter: blur(10px); }
+
+        .top-tagline {
+            font-size: 0.9rem; letter-spacing: 0.6rem; font-weight: 300; margin-bottom: 60px;
+            opacity: 0.8; text-transform: uppercase; margin-right: -0.6rem;
+        }
+
+        .logo-box {
+            position: relative; padding: 40px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .logo-box::after {
+            content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; height: 400px; border-radius: 50%; z-index: -1;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(0,0,0,0) 60%);
+        }
+
+        .logo-main {
+            font-family: 'Cinzel', serif; font-size: 5rem; letter-spacing: 1.2rem; margin: 0;
+            margin-right: -1.2rem; background: var(--gold-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 400; line-height: 1;
+        }
+
+        .logo-sub {
+            font-family: 'Cinzel', serif; font-size: 2.2rem; letter-spacing: 1.8rem; margin-top: 10px;
+            margin-right: -1.8rem; font-weight: 400; background: var(--gold-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;
+        }
+
+        .bottom-tagline {
+            margin-top: 80px; font-size: 1rem; letter-spacing: 0.5rem;
+            text-transform: uppercase; font-weight: 300; opacity: 0.9; margin-right: -0.5rem;
+        }
+
+        .access-btn {
+            margin-top: 50px; background: transparent; border: 1px solid var(--dark-gold);
+            color: var(--gold); padding: 15px 40px; cursor: pointer;
+            font-family: 'Montserrat', sans-serif; letter-spacing: 4px;
+            transition: 0.4s; text-decoration: none; font-size: 0.8rem; outline: none;
+        }
+
+        .access-btn:hover {
+            background: var(--gold); color: black; box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: flex; justify-content: center;
+            align-items: center; z-index: 100; opacity: 0; visibility: hidden;
+            transition: 0.5s; backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-content {
+            background: #0f0f0f; padding: 40px; border: 1px solid var(--dark-gold);
+            text-align: center; max-width: 400px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,1);
+        }
+
+        .modal-content h2 {
+            font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 3px;
+            margin-bottom: 25px; font-size: 1.2rem;
+        }
+
+        .modal-content input {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--dark-gold);
+            color: white; text-align: center; font-size: 1.5rem; padding: 10px 0;
+            font-family: 'Montserrat', sans-serif; letter-spacing: 8px; outline: none; margin-bottom: 30px;
+        }
+
+        .modal-content input::placeholder { letter-spacing: 2px; font-size: 0.8rem; opacity: 0.4; color: var(--gold); }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 30px; font-size: 2rem;
+            color: var(--gold); cursor: pointer; font-weight: 200;
+        }
+
+        .fade-in { animation: fadeInAnim 3s ease-in-out; }
+        @keyframes fadeInAnim {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .logo-main { font-size: 3rem; letter-spacing: 0.8rem; margin-right: -0.8rem; }
+            .logo-sub { font-size: 1.4rem; letter-spacing: 1.2rem; margin-right: -1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container fade-in" id="mainContainer">
+        <div class="top-tagline">Enter the world of luxury</div>
+        <div class="logo-box">
+            <h1 class="logo-main">ROYCE</h1>
+            <div class="logo-sub">ÉTERNITÉ</div>
+        </div>
+        <div class="bottom-tagline">Timeless Craftsmanship</div>
+        <button class="access-btn" onclick="openModal()">ENTER ACCESS CODE</button>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <h2>PRIVATE ACCESS</h2>
+            <input type="password" id="accessCode" placeholder="••••••" maxlength="6">
+            <button class="access-btn" style="margin-top: 0;" onclick="validateCode()">AUTHENTICATE</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+            document.getElementById('mainContainer').classList.add('blur');
+            setTimeout(() => document.getElementById('accessCode').focus(), 500);
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.getElementById('mainContainer').classList.remove('blur');
+        }
+
+        function validateCode() {
+            const code = document.getElementById('accessCode').value;
+            if(code === "1234") { // ZMIEŃ TEN KOD NA SWÓJ
+                alert("Access Granted");
+            } else {
+                alert("Invalid Access Code");
+                document.getElementById('accessCode').value = "";
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+    </script>
+</body>
+</html>
